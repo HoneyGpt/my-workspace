@@ -1,5 +1,5 @@
 import React from 'react';
-import { Heart, Sparkles } from 'lucide-react';
+import { Dribbble, ArrowUpRight } from 'lucide-react';
 
 export const Footer: React.FC = () => {
   return (
@@ -42,8 +42,13 @@ export const Footer: React.FC = () => {
           <a href="#projects" style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', textDecoration: 'none' }}>
             Startups
           </a>
-          <a href="#skills" style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', textDecoration: 'none' }}>
-            Skills
+          <a
+            href="https://dribbble.com/bhaskaruni-harshita"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ fontSize: '0.82rem', color: '#EA4C89', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.3rem', fontWeight: 700 }}
+          >
+            Dribbble <ArrowUpRight size={12} />
           </a>
         </div>
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Send, CheckCircle2, Mail, MapPin } from 'lucide-react';
+import { Send, CheckCircle2, Mail, MapPin, Dribbble, ArrowUpRight } from 'lucide-react';
 import { playClickSound, playHoverSound } from '../utils/audio';
 
 export const NotebookContact: React.FC = () => {
@@ -189,6 +189,19 @@ export const NotebookContact: React.FC = () => {
                       style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--text-primary)', textDecoration: 'none' }}
                     >
                       honeygpt111@gmail.com
+                    </a>
+                  </div>
+
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+                    <Dribbble size={18} color="#EA4C89" />
+                    <a
+                      href="https://dribbble.com/bhaskaruni-harshita"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--text-primary)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.4rem' }}
+                    >
+                      dribbble.com/bhaskaruni-harshita
+                      <ArrowUpRight size={14} />
                     </a>
                   </div>
 
