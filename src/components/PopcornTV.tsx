@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Tv, Power, Volume2, VolumeX, Sliders, Sun, Moon, RefreshCw, X, Radio } from 'lucide-react';
+import { Tv, Power, Volume2, VolumeX, Sliders, Sun, Moon, RefreshCw, X, Radio, BookOpen } from 'lucide-react';
 import { playClickSound, playHoverSound, playTvPowerSound, playTvStaticSound, playVolumeBeepSound, playPopcornSound } from '../utils/audio';
+import { MagazineBook } from './MagazineBook';
+
 
 export interface ChannelItem {
   id: number;
@@ -258,6 +260,10 @@ export const PopcornTV: React.FC = () => {
   const [popcornAchievementUnlocked, setPopcornAchievementUnlocked] = useState<boolean>(false);
   const [poppingKernels, setPoppingKernels] = useState<PoppingKernel[]>([]);
   const [isHoveringBowl, setIsHoveringBowl] = useState<boolean>(false);
+
+  // Magazine Book Modal State
+  const [isMagazineOpen, setIsMagazineOpen] = useState<boolean>(false);
+  const [isHoveringMagazine, setIsHoveringMagazine] = useState<boolean>(false);
 
   const activeChannel = popcornChannels.find(c => c.id === activeChannelId) || popcornChannels[0];
   const isCupEmpty = coffeeSipCount >= 5;
@@ -523,29 +529,55 @@ export const PopcornTV: React.FC = () => {
           <span>TIPS: Click LIVE button on remote again to switch video broadcasts!</span>
         </div>
 
-        {/* TOP ACCESSORIES: TABLE LAMP */}
+        {/* TOP ACCESSORIES: TABLE LAMP & MAGAZINE TOGGLE */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
-          <button
-            onClick={() => { setIsLampOn(!isLampOn); playClickSound('medium'); }}
-            onMouseEnter={playHoverSound}
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.6rem',
-              padding: '0.5rem 1rem',
-              borderRadius: 'var(--radius-full)',
-              border: '1px solid var(--border-medium)',
-              backgroundColor: isLampOn ? '#F5C84C' : 'rgba(255, 255, 255, 0.1)',
-              color: isLampOn ? '#262626' : '#FAF8F3',
-              fontSize: '0.8rem',
-              fontWeight: 600,
-              cursor: 'pointer',
-              transition: 'all 0.3s ease',
-            }}
-          >
-            {isLampOn ? <Sun size={15} /> : <Moon size={15} />}
-            <span>{isLampOn ? 'Warm Table Lamp ON' : 'Cinema Dark Mode'}</span>
-          </button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+            <button
+              onClick={() => { setIsLampOn(!isLampOn); playClickSound('medium'); }}
+              onMouseEnter={playHoverSound}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.6rem',
+                padding: '0.5rem 1rem',
+                borderRadius: 'var(--radius-full)',
+                border: '1px solid var(--border-medium)',
+                backgroundColor: isLampOn ? '#F5C84C' : 'rgba(255, 255, 255, 0.1)',
+                color: isLampOn ? '#262626' : '#FAF8F3',
+                fontSize: '0.8rem',
+                fontWeight: 600,
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+              }}
+            >
+              {isLampOn ? <Sun size={15} /> : <Moon size={15} />}
+              <span>{isLampOn ? 'Warm Table Lamp ON' : 'Cinema Dark Mode'}</span>
+            </button>
+
+            <button
+              onClick={() => { setIsMagazineOpen(!isMagazineOpen); playClickSound('medium'); }}
+              onMouseEnter={playHoverSound}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                padding: '0.5rem 1.1rem',
+                borderRadius: 'var(--radius-full)',
+                border: isMagazineOpen ? '1px solid #8FAF90' : '1px solid rgba(143, 175, 144, 0.4)',
+                backgroundColor: isMagazineOpen ? '#8FAF90' : 'rgba(143, 175, 144, 0.18)',
+                color: isMagazineOpen ? '#18181B' : '#8FAF90',
+                fontSize: '0.8rem',
+                fontWeight: 700,
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                boxShadow: isMagazineOpen ? '0 0 14px rgba(143, 175, 144, 0.5)' : 'none',
+              }}
+              title="Click to toggle Editorial Magazine Book"
+            >
+              <BookOpen size={15} />
+              <span>{isMagazineOpen ? 'Close Magazine' : '📖 Magazine Book'}</span>
+            </button>
+          </div>
 
           <span className="mono" style={{ fontSize: '0.78rem', color: 'var(--text-tertiary)' }}>
             LIVING ENTERTAINMENT CORNER
@@ -814,6 +846,76 @@ export const PopcornTV: React.FC = () => {
                   <stop offset="100%" stopColor="#E5E7EB" />
                 </linearGradient>
               </defs>
+            </svg>
+          </motion.div>
+
+          {/* PHYSICAL INTERACTIVE MAGAZINE BOOK STACK ASSET NEAR TV */}
+          <motion.div
+            onClick={() => { setIsMagazineOpen(!isMagazineOpen); playClickSound('high'); }}
+            onMouseEnter={() => { setIsHoveringMagazine(true); playHoverSound(); }}
+            onMouseLeave={() => setIsHoveringMagazine(false)}
+            title="Click to open Magazine Book!"
+            style={{
+              position: 'absolute',
+              bottom: '-38px',
+              left: '115px',
+              zIndex: 12,
+              cursor: 'pointer',
+              transform: isHoveringMagazine
+                ? 'rotate(-4deg) scale(1.08) translateY(-5px)'
+                : 'rotate(-2deg) scale(1)',
+              transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
+              filter: isHoveringMagazine
+                ? 'drop-shadow(0 14px 24px rgba(245, 200, 76, 0.5))'
+                : 'drop-shadow(0 8px 16px rgba(0, 0, 0, 0.3))',
+            }}
+          >
+            <AnimatePresence>
+              {isHoveringMagazine && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10, scale: 0.85 }}
+                  animate={{ opacity: 1, y: -15, scale: 1 }}
+                  exit={{ opacity: 0, y: -20, scale: 0.85 }}
+                  style={{
+                    position: 'absolute',
+                    top: '-42px',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    backgroundColor: '#F5C84C',
+                    color: '#18181B',
+                    padding: '0.4rem 0.85rem',
+                    borderRadius: 'var(--radius-full)',
+                    fontSize: '0.75rem',
+                    fontWeight: 800,
+                    fontFamily: 'var(--font-mono)',
+                    whiteSpace: 'nowrap',
+                    boxShadow: '0 6px 16px rgba(0,0,0,0.3)',
+                    zIndex: 90,
+                    pointerEvents: 'none',
+                  }}
+                >
+                  📖 Click to Open Magazine Book!
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            <svg width="86" height="64" viewBox="0 0 86 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <ellipse cx="43" cy="58" rx="38" ry="5" fill="rgba(0, 0, 0, 0.28)" />
+              {/* Bottom Magazine */}
+              <rect x="8" y="38" width="70" height="14" rx="3" fill="#27272A" stroke="#18181B" strokeWidth="1.5" />
+              <rect x="74" y="41" width="3" height="8" rx="1" fill="#E4E4E7" />
+              {/* Middle Magazine */}
+              <rect x="12" y="24" width="66" height="15" rx="3" fill="#8FAF90" stroke="#18181B" strokeWidth="1.5" />
+              <text x="45" y="34" textAnchor="middle" fontSize="5.5" fontWeight="800" fontFamily="var(--font-mono)" fill="#18181B">
+                CRAFT VOL. 1
+              </text>
+              {/* Top Magazine */}
+              <rect x="6" y="10" width="68" height="16" rx="3" fill="#F5C84C" stroke="#18181B" strokeWidth="1.8" />
+              <text x="40" y="21" textAnchor="middle" fontSize="6" fontWeight="900" fontFamily="var(--font-mono)" fill="#18181B" letterSpacing="0.5">
+                MAGAZINE
+              </text>
+              <path d="M12 10 L12 26" stroke="#18181B" strokeWidth="2" />
+              <circle cx="66" cy="18" r="3" fill="#18181B" />
             </svg>
           </motion.div>
 
@@ -1229,6 +1331,7 @@ export const PopcornTV: React.FC = () => {
               boxShadow: '0 25px 50px rgba(0, 0, 0, 0.4)',
               position: 'relative',
               zIndex: 2,
+              fontFamily: 'var(--font-sans)',
             }}
           >
             <div style={{ textAlign: 'center', marginBottom: '1rem', paddingBottom: '0.6rem', borderBottom: '1px solid rgba(255, 255, 255, 0.1)' }}>
@@ -1254,6 +1357,7 @@ export const PopcornTV: React.FC = () => {
                   justifyContent: 'center',
                   cursor: 'pointer',
                   boxShadow: isTvOn ? '0 0 12px rgba(239, 68, 68, 0.5)' : 'none',
+                  fontFamily: 'var(--font-sans)',
                 }}
                 title="Power TV"
               >
@@ -1268,15 +1372,17 @@ export const PopcornTV: React.FC = () => {
                   display: 'flex',
                   alignItems: 'center',
                   gap: '0.4rem',
-                  padding: '0.45rem 0.85rem',
+                  padding: '0.5rem 1rem',
                   borderRadius: 'var(--radius-full)',
                   border: 'none',
                   backgroundColor: '#EF4444',
                   color: '#FFF',
-                  fontSize: '0.75rem',
-                  fontWeight: 800,
+                  fontSize: '0.78rem',
+                  fontWeight: 700,
                   cursor: 'pointer',
                   boxShadow: '0 0 12px rgba(239, 68, 68, 0.5)',
+                  fontFamily: 'var(--font-sans)',
+                  letterSpacing: '0.04em',
                 }}
                 title="Click to cycle Live Video Broadcasts!"
               >
@@ -1288,14 +1394,16 @@ export const PopcornTV: React.FC = () => {
                 onClick={() => { setIsMenuOpen(!isMenuOpen); playClickSound('medium'); }}
                 onMouseEnter={playHoverSound}
                 style={{
-                  padding: '0.45rem 0.85rem',
+                  padding: '0.5rem 1rem',
                   borderRadius: 'var(--radius-full)',
                   border: '1px solid rgba(255, 255, 255, 0.2)',
                   backgroundColor: isMenuOpen ? '#F5C84C' : 'transparent',
                   color: isMenuOpen ? '#262626' : '#FFF',
-                  fontSize: '0.75rem',
+                  fontSize: '0.78rem',
                   fontWeight: 700,
                   cursor: 'pointer',
+                  fontFamily: 'var(--font-sans)',
+                  letterSpacing: '0.04em',
                 }}
               >
                 MENU
@@ -1313,9 +1421,11 @@ export const PopcornTV: React.FC = () => {
                   backgroundColor: '#3F3F46',
                   color: '#FFF',
                   border: '1px solid rgba(255,255,255,0.1)',
-                  fontWeight: 600,
+                  fontWeight: 700,
                   fontSize: '0.78rem',
                   cursor: 'pointer',
+                  fontFamily: 'var(--font-sans)',
+                  letterSpacing: '0.04em',
                 }}
               >
                 VOL -
@@ -1330,9 +1440,11 @@ export const PopcornTV: React.FC = () => {
                   backgroundColor: '#3F3F46',
                   color: '#FFF',
                   border: '1px solid rgba(255,255,255,0.1)',
-                  fontWeight: 600,
+                  fontWeight: 700,
                   fontSize: '0.78rem',
                   cursor: 'pointer',
+                  fontFamily: 'var(--font-sans)',
+                  letterSpacing: '0.04em',
                 }}
               >
                 VOL +
@@ -1367,6 +1479,9 @@ export const PopcornTV: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* EDITORIAL MAGAZINE BOOK INTERACTIVE MODAL */}
+      <MagazineBook isOpen={isMagazineOpen} onClose={() => setIsMagazineOpen(false)} />
     </section>
   );
 };
