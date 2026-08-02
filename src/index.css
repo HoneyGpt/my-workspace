@@ -1,0 +1,225 @@
+:root {
+  /* Design Tokens from Portfolio Design Prompt */
+  --bg-primary: #FAF8F3;        /* Warm Ivory */
+  --bg-secondary: #F2E8DA;      /* Soft Sand */
+  --bg-tertiary: #EBE1D0;       /* Slightly deeper sand */
+  --accent-primary: #F5C84C;    /* Golden Yellow */
+  --accent-secondary: #8FAF90;  /* Muted Sage */
+  --accent-support: #6FA8DC;    /* Soft Blue */
+  --text-primary: #262626;      /* Rich Charcoal */
+  --text-secondary: #5A5852;    /* Warm Muted Charcoal */
+  --text-tertiary: #8C887E;     /* Soft Muted Gray */
+  
+  --border-light: rgba(38, 38, 38, 0.08);
+  --border-medium: rgba(38, 38, 38, 0.16);
+  --border-yellow: rgba(245, 200, 76, 0.4);
+  
+  --font-serif: 'Instrument Serif', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  --shadow-sm: 0 2px 8px rgba(38, 38, 38, 0.04);
+  --shadow-md: 0 8px 24px rgba(38, 38, 38, 0.06);
+  --shadow-lg: 0 16px 40px rgba(38, 38, 38, 0.08);
+  
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-full: 9999px;
+  
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-smooth: cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  line-height: 1.6;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(38, 38, 38, 0.15);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(38, 38, 38, 0.3);
+}
+
+/* Typography Hierarchy */
+h1, h2, h3, .font-serif {
+  font-family: var(--font-serif);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(3rem, 7.5vw, 6.5rem);
+  line-height: 1.02;
+}
+
+h2 {
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  line-height: 1.08;
+}
+
+h3 {
+  font-size: clamp(1.4rem, 2.5vw, 2.2rem);
+  line-height: 1.2;
+}
+
+p {
+  font-size: clamp(1rem, 1.2vw, 1.15rem);
+  color: var(--text-secondary);
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Highlight & Accents */
+.highlight-yellow {
+  background: linear-gradient(120deg, rgba(245, 200, 76, 0.3) 0%, rgba(245, 200, 76, 0.6) 100%);
+  padding: 0 0.2em;
+  border-radius: 4px;
+}
+
+.highlight-sage {
+  background: linear-gradient(120deg, rgba(143, 175, 144, 0.25) 0%, rgba(143, 175, 144, 0.5) 100%);
+  padding: 0 0.2em;
+  border-radius: 4px;
+}
+
+.highlight-blue {
+  background: linear-gradient(120deg, rgba(111, 168, 220, 0.25) 0%, rgba(111, 168, 220, 0.5) 100%);
+  padding: 0 0.2em;
+  border-radius: 4px;
+}
+
+/* Paper Grain Effect Overlay */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 999;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+}
+
+/* Selection */
+::selection {
+  background-color: var(--accent-primary);
+  color: var(--text-primary);
+}
+
+/* Glass & Card Utilities */
+.workspace-card {
+  background: var(--bg-primary);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: all 0.4s var(--ease-out-expo);
+}
+
+.workspace-card:hover {
+  border-color: var(--border-medium);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.workspace-card-sand {
+  background: var(--bg-secondary);
+  border: 1px solid rgba(38, 38, 38, 0.06);
+  border-radius: var(--radius-md);
+}
+
+/* Button & Interactive Micro-animations */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.8rem;
+  background-color: var(--text-primary);
+  color: var(--bg-primary);
+  border: 1px solid var(--text-primary);
+  border-radius: var(--radius-full);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s var(--ease-out-expo);
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-primary);
+  color: var(--text-primary);
+  border-color: var(--accent-primary);
+  transform: scale(1.03);
+  box-shadow: 0 8px 20px rgba(245, 200, 76, 0.35);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.8rem;
+  background-color: transparent;
+  color: var(--text-primary);
+  border: 1px solid var(--border-medium);
+  border-radius: var(--radius-full);
+  font-family: var(--font-sans);
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.3s var(--ease-out-expo);
+}
+
+.btn-secondary:hover {
+  background-color: var(--bg-secondary);
+  border-color: var(--text-primary);
+  transform: scale(1.02);
+}
+
+/* Custom Cursor Hide Default when Active */
+@media (pointer: fine) {
+  body.custom-cursor-active {
+    cursor: none;
+  }
+  body.custom-cursor-active a, 
+  body.custom-cursor-active button,
+  body.custom-cursor-active [role="button"] {
+    cursor: none;
+  }
+}
