@@ -128,29 +128,12 @@ export const defaultMagazinePages: MagazinePage[] = [
   },
   {
     pageNumber: 7,
-    title: 'FOCUS — MASTER YOUR ATTENTION',
-    subtitle: 'UI / UX DESIGN & PRODUCT SYSTEM',
-    category: 'DIGITAL EXPERIENCE',
-    contentType: 'showcase',
-    imageSrc: '/magazine/page7_focus_app_ui.jpg',
-    imageCaption: 'Figure 4.1: Focus Mobile App UI — Deep Study Sessions, App Blocking & Parent Insights',
-    headline: 'STAY FOCUSED. WE HANDLE DISTRACTIONS.',
-    bodyText: 'A modern mobile application designed to eliminate digital fatigue. Features Deep Study Sessions (24:59 Pomodoro Timer), strict App Blocking (YouTube, Instagram, TikTok), Parental Lock, and Live Insights.',
-    quote: '"Deep study sessions, app blocking, parental insights & no-stop mode."',
-    tags: ['iOS & Android', 'UI Design', 'Framer Motion', 'Productivity App'],
-    specs: [
-      { label: 'STREAK SYSTEM', value: '18 Days Active' },
-      { label: 'BLOCKING ENGINE', value: 'Real-Time Distraction Shield' },
-    ],
-  },
-  {
-    pageNumber: 8,
     title: 'EYE RENEWAL GEL',
     subtitle: 'PEPTIDE + CAFFEINE COMPLEX 15ML',
     category: 'OCULAR TREATMENT',
     contentType: 'editorial',
     imageSrc: '/magazine/page8_lumora_eye_renewal_gel.jpg',
-    imageCaption: 'Figure 4.2: LUMORA Eye Renewal Gel — Cooling Precision Tip & Gel Droplet Detail',
+    imageCaption: 'Figure 4.1: LUMORA Eye Renewal Gel — Cooling Precision Tip & Gel Droplet Detail',
     headline: 'COOLING ILLUMINATING EYE THERAPY',
     bodyText: 'Formulated with a potent Peptide & Caffeine Complex to reduce puffiness, brighten dark under-eye circles, and smooth micro-creases. Features a cool-touch metallic pump tip.',
     quote: '"Cooling gel texture for instant awakening and fatigue relief."',
@@ -161,13 +144,47 @@ export const defaultMagazinePages: MagazinePage[] = [
     ],
   },
   {
+    pageNumber: 8,
+    title: 'VITAMIN RADIANCE SERUM',
+    subtitle: '15% STABILIZED VITAMIN C 30ML',
+    category: 'ANTIOXIDANT BOOST',
+    contentType: 'showcase',
+    imageSrc: '/magazine/page10_lumora_vitamin_radiance.jpg',
+    imageCaption: 'Figure 4.2: LUMORA Vitamin Radiance Serum — Amber Glass Dropper & Outer Box Packaging',
+    headline: 'GOLDEN HOUR ANTIOXIDANT SHIELD',
+    bodyText: 'A high-potency antioxidant serum containing 15% Stabilized Vitamin C, Ferulic Acid, and Vitamin E. Neutralizes free radicals, brightens hyperpigmentation, and imparts a luminous golden hour glow.',
+    quote: '"Pure Vitamin C science for luminous, high-clarity skin radiance."',
+    tags: ['15% Vitamin C', 'Ferulic Acid', 'Vitamin E', 'Antioxidant Glow'],
+    specs: [
+      { label: 'POTENCY', value: '15% Stabilized Active' },
+      { label: 'BOTTLING', value: 'Amber UV Protect Glass' },
+    ],
+  },
+  {
     pageNumber: 9,
+    title: 'FOCUS — MASTER YOUR ATTENTION',
+    subtitle: 'UI / UX DESIGN & PRODUCT SYSTEM',
+    category: 'DIGITAL EXPERIENCE',
+    contentType: 'showcase',
+    imageSrc: '/magazine/page7_focus_app_ui.jpg',
+    imageCaption: 'Figure 5.1: Focus Mobile App UI — Deep Study Sessions, App Blocking & Parent Insights',
+    headline: 'STAY FOCUSED. WE HANDLE DISTRACTIONS.',
+    bodyText: 'A modern mobile application designed to eliminate digital fatigue. Features Deep Study Sessions (24:59 Pomodoro Timer), strict App Blocking (YouTube, Instagram, TikTok), Parental Lock, and Live Insights.',
+    quote: '"Deep study sessions, app blocking, parental insights & no-stop mode."',
+    tags: ['iOS & Android', 'UI Design', 'Framer Motion', 'Productivity App'],
+    specs: [
+      { label: 'STREAK SYSTEM', value: '18 Days Active' },
+      { label: 'BLOCKING ENGINE', value: 'Real-Time Distraction Shield' },
+    ],
+  },
+  {
+    pageNumber: 10,
     title: 'COLLEGE T-SHIRT COLLECTION',
     subtitle: 'FOCUS • DISCIPLINE • TIME • SUCCESS',
     category: 'APPAREL & MERCH',
     contentType: 'gallery',
     imageSrc: '/magazine/page9_focus_tshirt_collection.jpg',
-    imageCaption: 'Figure 5.1: Focus College Merch — Oversized Heavyweight Cotton Graphic Tees',
+    imageCaption: 'Figure 5.2: Focus College Merch — Oversized Heavyweight Cotton Graphic Tees',
     headline: 'OVERSIZED COLLEGE APPAREL DESIGN',
     bodyText: 'Heavyweight premium cotton T-shirts featuring bold typographic prints ("Focus On The Now, Create Your Future", "Block Distractions Build Future", "Stay Focused Every Minute Matters"), custom neck prints, and woven sleeve tags.',
     quote: '"Oversized modern college fit with high-density durable screen prints."',
@@ -178,20 +195,71 @@ export const defaultMagazinePages: MagazinePage[] = [
     ],
   },
   {
-    pageNumber: 10,
-    title: 'VITAMIN RADIANCE SERUM',
-    subtitle: '15% STABILIZED VITAMIN C 30ML',
+    pageNumber: 11,
+    title: 'FOCUS BRAND SYSTEM',
+    subtitle: 'MASTER YOUR ATTENTION — BRAND GUIDELINES',
+    category: 'BRAND ARCHITECTURE',
+    contentType: 'showcase',
+    imageSrc: '/magazine/page11_focus_brand_identity.jpg',
+    imageCaption: 'Figure 6.1: Focus Brand Design System, Color Tokens (#1F1B3A, #6C47FF, #F3F2FF) & Poppins Typography',
+    headline: 'VIVID PURPLE PALETTE & POPPINS TYPE',
+    bodyText: 'A vibrant digital brand identity anchored by deep midnight violet (#1F1B3A), energetic electric purple (#6C47FF), and soft lavender (#F3F2FF). Paired with Poppins font family for modern clarity.',
+    quote: '"Stay Focused. Block Distractions. Track Progress. Finish What You Start."',
+    tags: ['Brand Identity', 'Poppins Font', 'Color Tokens', 'App Ambassador'],
+    specs: [
+      { label: 'MAIN COLORS', value: '#1F1B3A, #6C47FF, #F3F2FF' },
+      { label: 'TYPOGRAPHY', value: 'Poppins (Light, SemiBold, ExtraBold)' },
+    ],
+  },
+  {
+    pageNumber: 12,
+    title: 'DISTRACTION SHIELD CAMPAIGN',
+    subtitle: 'TAKE CONTROL OF YOUR TIME',
+    category: 'CAMPAIGN LAUNCH',
+    contentType: 'editorial',
+    imageSrc: '/magazine/page12_focus_dome_shield.jpg',
+    imageCaption: 'Figure 6.2: Focus 3D Shielding Portal — Blocking Social Media Notifications & Distractions',
+    headline: 'BUILD YOUR FUTURE WITH NO-STOP MODE',
+    bodyText: 'Visual 3D campaign illustrating the Focus app forming a protective glowing glass shield over the smartphone, shattering incoming distracting alerts from YouTube, Instagram, TikTok, and Discord.',
+    quote: '"Take Control of Your Time. Build Your Future."',
+    tags: ['3D Artwork', 'Product Campaign', 'Focus Shield', 'No-Stop Mode'],
+    specs: [
+      { label: 'CAMPAIGN CONCEPT', value: '3D Protective Focus Portal' },
+      { label: 'TARGET AUDIENCE', value: 'Students & Deep Workers' },
+    ],
+  },
+  {
+    pageNumber: 13,
+    title: 'STUDENT AMBASSADOR & DESK',
+    subtitle: 'FOCUS IS YOUR STUDY PARTNER',
+    category: 'PRODUCT CAMPAIGN',
+    contentType: 'showcase',
+    imageSrc: '/magazine/page13_focus_ambassador_desk.jpg',
+    imageCaption: 'Figure 7.1: Founder & Ambassador Workspace — Focus Mug, Books & Live App Interface',
+    headline: 'MADE FOR STUDENTS. TRUSTED BY PARENTS.',
+    bodyText: 'Editorial lifestyle showcase featuring the Focus ecosystem in real study environments: branded ceramic mug, stacked study journals ("DISCIPLINE", "CONSISTENCY", "SUCCESS"), and live dashboard integration.',
+    quote: '"Focus is not just an app, it\'s your study partner. Made for Students. Trusted by Parents."',
+    tags: ['Lifestyle Photography', 'Study Partner', 'Product Ecosystem'],
+    specs: [
+      { label: 'FOUNDER BRAND', value: 'Focus Ecosystem' },
+      { label: 'TRUST RATING', value: 'Parent & Student Approved' },
+    ],
+  },
+  {
+    pageNumber: 14,
+    title: 'WHERE WISDOM MEETS FOCUS',
+    subtitle: 'HARSHITA EDITORIAL ARCHIVE — VOL. 01 CLOSING',
     category: 'BACK COVER SPREAD',
     contentType: 'backcover',
-    imageSrc: '/magazine/page10_lumora_vitamin_radiance.jpg',
-    imageCaption: 'Figure 5.2: LUMORA Vitamin Radiance Serum — Amber Glass Dropper & Outer Box Packaging',
-    headline: 'GOLDEN HOUR ANTIOXIDANT SHIELD',
-    bodyText: 'A high-potency antioxidant serum containing 15% Stabilized Vitamin C, Ferulic Acid, and Vitamin E. Neutralizes free radicals, brightens hyperpigmentation, and imparts a luminous golden hour glow.',
-    quote: '"Science that feels human — Harshita Archive Volume 01 Complete."',
-    tags: ['15% Vitamin C', 'Ferulic Acid', 'Vitamin E', 'Antioxidant Glow'],
+    imageSrc: '/magazine/page14_focus_wisdom_krishna.jpg',
+    imageCaption: 'Figure 7.2: Sacred Focus Campaign — Lord Krishna & Yogah Karmasu Kaushalam',
+    headline: 'YOGAH KARMASU KAUSHALAM',
+    bodyText: 'A sacred fusion of ancient wisdom and modern digital focus. "Excellence in action is Yoga." Channeling deep concentration, peace of mind, and unwavering dedication into every digital craft.',
+    quote: '"Where Wisdom Meets Focus. Block distractions. Build your future."',
+    tags: ['Sacred Wisdom', 'Bhagavad Gita', 'Excellence In Action', 'Harshita Archive'],
     specs: [
-      { label: 'POTENCY', value: '15% Stabilized Active' },
-      { label: 'PUBLICATION', value: 'Issue No. 01 Complete' },
+      { label: 'PUBLICATION', value: 'Harshita Editorial Studio' },
+      { label: 'STATUS', value: 'Volume 01 Complete (14 Pages)' },
     ],
   },
 ];
@@ -462,16 +530,16 @@ export const MagazineBook: React.FC<MagazineBookProps> = ({
         >
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
             <Sparkles size={14} color="#F5C84C" />
-            <span>Use Left & Right Arrow keys or buttons to navigate 5 spreads (10 pages)</span>
+            <span>Use Left & Right Arrow keys or buttons to navigate 7 spreads (14 pages)</span>
           </div>
 
           <div style={{ color: '#8FAF90', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
             <CheckCircle2 size={14} />
-            <span>10 High-Res Design & Product Spreads Active</span>
+            <span>14 High-Res Design & Product Spreads Active</span>
           </div>
 
           <div>
-            HARSHITA EDITORIAL ARCHIVE // ISSUE NO. 01
+            HARSHITA EDITORIAL ARCHIVE // VOLUME 01 COMPLETE
           </div>
         </div>
       </motion.div>
@@ -668,7 +736,7 @@ const RenderPageContent: React.FC<{ page?: MagazinePage; side: 'left' | 'right';
         }}
       >
         <span>HARSHITA EDITORIAL ARCHIVE</span>
-        <span>ISSUE 01</span>
+        <span>VOLUME 01</span>
       </div>
     </div>
   );

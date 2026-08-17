@@ -1,17 +1,8 @@
-import React, { useState } from 'react';
-import { Send, CheckCircle2, Mail, MapPin, Dribbble, ArrowUpRight } from 'lucide-react';
+import React from 'react';
+import { Mail, MapPin, Github, Linkedin, Download, ArrowUpRight } from 'lucide-react';
 import { playClickSound, playHoverSound } from '../utils/audio';
 
 export const NotebookContact: React.FC = () => {
-  const [formState, setFormState] = useState({ name: '', email: '', subject: '', message: '' });
-  const [isSubmitted, setIsSubmitted] = useState(false);
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    playClickSound('high');
-    setIsSubmitted(true);
-  };
-
   return (
     <section id="contact" style={{ padding: '8rem 1.5rem', maxWidth: '1280px', margin: '0 auto' }}>
       <div
@@ -60,7 +51,7 @@ export const NotebookContact: React.FC = () => {
               }}
             >
               <span className="mono" style={{ fontSize: '0.75rem', color: 'var(--text-secondary)' }}>
-                CONTACT & COLLABORATION NOTEBOOK
+                CONTACT & RECRUITER HUB
               </span>
             </div>
 
@@ -72,161 +63,192 @@ export const NotebookContact: React.FC = () => {
             </p>
           </div>
 
-          {/* Form + Direct Details Grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '3.5rem' }}>
-            {/* Left: Contact Form */}
-            {isSubmitted ? (
-              <div
-                style={{
-                  padding: '3rem',
-                  backgroundColor: 'var(--bg-secondary)',
-                  borderRadius: 'var(--radius-md)',
-                  textAlign: 'center',
-                  border: '1px solid var(--border-light)',
-                }}
-              >
-                <CheckCircle2 size={48} color="#8FAF90" style={{ margin: '0 auto 1rem auto' }} />
-                <h3 style={{ fontSize: '1.8rem', fontFamily: 'var(--font-serif)', marginBottom: '0.6rem' }}>
-                  Note Received!
+          {/* Contact Details & Links Grid */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2.5rem' }}>
+            {/* Download Resume Card */}
+            <div
+              style={{
+                padding: '2.2rem',
+                backgroundColor: 'var(--bg-primary)',
+                borderRadius: 'var(--radius-md)',
+                border: '1px solid var(--border-medium)',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+              }}
+            >
+              <div>
+                <span className="mono" style={{ fontSize: '0.75rem', color: 'var(--accent-warm)', fontWeight: 700, display: 'block', marginBottom: '0.5rem' }}>
+                  CURRICULUM VITAE
+                </span>
+                <h3 style={{ fontSize: '1.6rem', fontFamily: 'var(--font-serif)', marginBottom: '0.6rem' }}>
+                  Download Full Resume
                 </h3>
-                <p style={{ color: 'var(--text-secondary)', fontSize: '1rem' }}>
-                  Thank you for reaching out. Harshita will get back to you shortly.
+                <p style={{ fontSize: '0.92rem', color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: '1.8rem' }}>
+                  Get detailed insight into Harshita's full-stack architecture experience, edtech startups, AI project deployments, and technical stack.
                 </p>
               </div>
-            ) : (
-              <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                <div>
-                  <label className="mono" style={{ fontSize: '0.78rem', color: 'var(--text-tertiary)', display: 'block', marginBottom: '0.4rem' }}>
-                    YOUR NAME // SENDER
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="e.g. Alex Vance"
-                    value={formState.name}
-                    onChange={e => setFormState({ ...formState, name: e.target.value })}
-                    style={{
-                      width: '100%',
-                      padding: '0.85rem 1rem',
-                      borderRadius: 'var(--radius-sm)',
-                      border: '1px solid var(--border-medium)',
-                      backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                      fontFamily: 'var(--font-sans)',
-                      fontSize: '1rem',
-                    }}
-                  />
-                </div>
 
-                <div>
-                  <label className="mono" style={{ fontSize: '0.78rem', color: 'var(--text-tertiary)', display: 'block', marginBottom: '0.4rem' }}>
-                    EMAIL ADDRESS
-                  </label>
-                  <input
-                    type="email"
-                    required
-                    placeholder="alex@company.com"
-                    value={formState.email}
-                    onChange={e => setFormState({ ...formState, email: e.target.value })}
-                    style={{
-                      width: '100%',
-                      padding: '0.85rem 1rem',
-                      borderRadius: 'var(--radius-sm)',
-                      border: '1px solid var(--border-medium)',
-                      backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                      fontFamily: 'var(--font-sans)',
-                      fontSize: '1rem',
-                    }}
-                  />
-                </div>
+              <a
+                href="/MY_RESUME_FINAL.pdf"
+                download="Harshita_Bhaskaruni_Resume.pdf"
+                onClick={() => playClickSound('high')}
+                onMouseEnter={playHoverSound}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '0.6rem',
+                  padding: '0.9rem 1.6rem',
+                  borderRadius: 'var(--radius-full)',
+                  backgroundColor: 'var(--text-primary)',
+                  color: 'var(--bg-primary)',
+                  fontWeight: 600,
+                  fontSize: '0.92rem',
+                  textDecoration: 'none',
+                  transition: 'transform 0.2s ease',
+                }}
+                className="mono"
+              >
+                <Download size={18} />
+                Download Resume (PDF)
+              </a>
+            </div>
 
-                <div>
-                  <label className="mono" style={{ fontSize: '0.78rem', color: 'var(--text-tertiary)', display: 'block', marginBottom: '0.4rem' }}>
-                    YOUR MESSAGE OR COLLABORATION IDEA
-                  </label>
-                  <textarea
-                    required
-                    rows={4}
-                    placeholder="Tell me about your product vision or inquiry..."
-                    value={formState.message}
-                    onChange={e => setFormState({ ...formState, message: e.target.value })}
-                    style={{
-                      width: '100%',
-                      padding: '0.85rem 1rem',
-                      borderRadius: 'var(--radius-sm)',
-                      border: '1px solid var(--border-medium)',
-                      backgroundColor: 'rgba(255, 255, 255, 0.8)',
-                      fontFamily: 'var(--font-sans)',
-                      fontSize: '1rem',
-                      resize: 'vertical',
-                    }}
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="btn-primary"
-                  onMouseEnter={playHoverSound}
-                  style={{ width: 'fit-content', marginTop: '0.5rem' }}
-                >
-                  Send Letter Note
-                  <Send size={16} />
-                </button>
-              </form>
-            )}
-
-            {/* Right: Direct Details */}
-            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+            {/* LinkedIn & GitHub Professional Profiles */}
+            <div
+              style={{
+                padding: '2.2rem',
+                backgroundColor: 'var(--bg-primary)',
+                borderRadius: 'var(--radius-md)',
+                border: '1px solid var(--border-medium)',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+              }}
+            >
               <div>
-                <h4 style={{ fontSize: '1.4rem', fontFamily: 'var(--font-serif)', marginBottom: '1.5rem' }}>
-                  Direct Contact & Profiles
-                </h4>
+                <span className="mono" style={{ fontSize: '0.75rem', color: 'var(--accent-support)', fontWeight: 700, display: 'block', marginBottom: '0.5rem' }}>
+                  PROFESSIONAL PROFILES
+                </span>
+                <h3 style={{ fontSize: '1.6rem', fontFamily: 'var(--font-serif)', marginBottom: '0.6rem' }}>
+                  Connect & Explore Code
+                </h3>
+                <p style={{ fontSize: '0.92rem', color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: '1.5rem' }}>
+                  Review active open-source projects, repository contributions, and network professionally.
+                </p>
+              </div>
 
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem', marginBottom: '2.5rem' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
-                    <Mail size={18} color="#F5C84C" />
-                    <a
-                      href="mailto:honeygpt111@gmail.com"
-                      style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--text-primary)', textDecoration: 'none' }}
-                    >
-                      honeygpt111@gmail.com
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.9rem' }}>
+                <a
+                  href="https://github.com/HoneyGpt"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => playClickSound('medium')}
+                  onMouseEnter={playHoverSound}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    padding: '0.8rem 1.2rem',
+                    borderRadius: 'var(--radius-sm)',
+                    backgroundColor: 'var(--bg-secondary)',
+                    border: '1px solid var(--border-light)',
+                    color: 'var(--text-primary)',
+                    textDecoration: 'none',
+                    fontWeight: 600,
+                    fontSize: '0.9rem',
+                  }}
+                  className="mono"
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                    <Github size={18} />
+                    <span>GitHub (@HoneyGpt)</span>
+                  </div>
+                  <ArrowUpRight size={16} />
+                </a>
+
+                <a
+                  href="https://www.linkedin.com/in/harshitabhaskaruni1117/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => playClickSound('medium')}
+                  onMouseEnter={playHoverSound}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    padding: '0.8rem 1.2rem',
+                    borderRadius: 'var(--radius-sm)',
+                    backgroundColor: 'var(--bg-secondary)',
+                    border: '1px solid var(--border-light)',
+                    color: '#0A66C2',
+                    textDecoration: 'none',
+                    fontWeight: 600,
+                    fontSize: '0.9rem',
+                  }}
+                  className="mono"
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
+                    <Linkedin size={18} />
+                    <span>LinkedIn Profile</span>
+                  </div>
+                  <ArrowUpRight size={16} />
+                </a>
+              </div>
+            </div>
+
+            {/* Direct Contact Channels */}
+            <div
+              style={{
+                padding: '2.2rem',
+                backgroundColor: 'var(--bg-primary)',
+                borderRadius: 'var(--radius-md)',
+                border: '1px solid var(--border-medium)',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'space-between',
+              }}
+            >
+              <div>
+                <span className="mono" style={{ fontSize: '0.75rem', color: 'var(--text-tertiary)', fontWeight: 700, display: 'block', marginBottom: '0.5rem' }}>
+                  DIRECT CHANNELS
+                </span>
+                <h3 style={{ fontSize: '1.6rem', fontFamily: 'var(--font-serif)', marginBottom: '0.6rem' }}>
+                  Get in Touch
+                </h3>
+                <p style={{ fontSize: '0.92rem', color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: '1.5rem' }}>
+                  Direct email communication and location details.
+                </p>
+              </div>
+
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1.2rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+                  <div style={{ width: 40, height: 40, borderRadius: '50%', backgroundColor: 'var(--bg-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <Mail size={18} color="var(--text-primary)" />
+                  </div>
+                  <div>
+                    <span className="mono" style={{ fontSize: '0.72rem', color: 'var(--text-tertiary)', display: 'block' }}>
+                      DIRECT EMAIL
+                    </span>
+                    <a href="mailto:harshitabhaskaruni1117@gmail.com" style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--text-primary)', textDecoration: 'none' }}>
+                      harshitabhaskaruni1117@gmail.com
                     </a>
                   </div>
+                </div>
 
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
-                    <Dribbble size={18} color="#EA4C89" />
-                    <a
-                      href="https://dribbble.com/bhaskaruni-harshita"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      style={{ fontSize: '1rem', fontWeight: 600, color: 'var(--text-primary)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.4rem' }}
-                    >
-                      dribbble.com/bhaskaruni-harshita
-                      <ArrowUpRight size={14} />
-                    </a>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+                  <div style={{ width: 40, height: 40, borderRadius: '50%', backgroundColor: 'var(--bg-secondary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <MapPin size={18} color="var(--text-primary)" />
                   </div>
-
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
-                    <MapPin size={18} color="#8FAF90" />
-                    <span style={{ fontSize: '1rem', fontWeight: 500, color: 'var(--text-primary)' }}>
-                      India (Available Globally for Remote Work)
+                  <div>
+                    <span className="mono" style={{ fontSize: '0.72rem', color: 'var(--text-tertiary)', display: 'block' }}>
+                      LOCATION
+                    </span>
+                    <span style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--text-primary)' }}>
+                      India (IST / Remote Worldwide)
                     </span>
                   </div>
-                </div>
-
-                <div
-                  style={{
-                    padding: '1.5rem',
-                    backgroundColor: 'var(--bg-secondary)',
-                    borderRadius: 'var(--radius-md)',
-                    border: '1px solid var(--border-light)',
-                  }}
-                >
-                  <span className="mono" style={{ fontSize: '0.75rem', color: '#8FAF90', fontWeight: 700, display: 'block', marginBottom: '0.4rem' }}>
-                    ● CURRENT AVAILABILITY
-                  </span>
-                  <p style={{ fontSize: '0.92rem', color: 'var(--text-secondary)', lineHeight: 1.5 }}>
-                    Actively open for AI product advisory, full-stack web engineering, startup leadership, and technical speaking engagements.
-                  </p>
                 </div>
               </div>
             </div>

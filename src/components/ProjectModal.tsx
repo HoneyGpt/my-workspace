@@ -3,6 +3,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { X, ExternalLink, Github, Sparkles, Layers, Cpu, CheckCircle, BarChart3, Smartphone, Monitor } from 'lucide-react';
 import { playClickSound, playHoverSound } from '../utils/audio';
 
+export interface ProjectLink {
+  label: string;
+  url: string;
+}
+
 export interface ProjectData {
   id: string;
   title: string;
@@ -26,6 +31,8 @@ export interface ProjectData {
     features: string[];
   };
   codeSnippet: string;
+  liveLinks?: ProjectLink[];
+  githubLinks?: ProjectLink[];
 }
 
 interface ProjectModalProps {
@@ -102,6 +109,8 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'space-between',
+              gap: '1rem',
+              flexWrap: 'wrap',
             }}
           >
             <div>
@@ -115,24 +124,84 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
               <h2 style={{ fontSize: '1.8rem', lineHeight: 1.1 }}>{project.title}</h2>
             </div>
 
-            <button
-              onClick={() => { onClose(); playClickSound('medium'); }}
-              onMouseEnter={playHoverSound}
-              style={{
-                width: 40,
-                height: 40,
-                borderRadius: '50%',
-                border: '1px solid var(--border-medium)',
-                backgroundColor: 'var(--bg-primary)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                cursor: 'pointer',
-                transition: 'all 0.2s ease',
-              }}
-            >
-              <X size={20} />
-            </button>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.8rem' }}>
+              {/* Explore Live Links */}
+              {project.liveLinks && project.liveLinks.map((link, idx) => (
+                <a
+                  key={idx}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => playClickSound('high')}
+                  onMouseEnter={playHoverSound}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.4rem',
+                    padding: '0.45rem 0.95rem',
+                    borderRadius: 'var(--radius-full)',
+                    backgroundColor: project.accentColor,
+                    color: '#262626',
+                    fontSize: '0.82rem',
+                    fontWeight: 700,
+                    textDecoration: 'none',
+                    transition: 'transform 0.2s ease',
+                  }}
+                  className="mono"
+                >
+                  <ExternalLink size={14} />
+                  Explore Live ({link.label})
+                </a>
+              ))}
+
+              {/* GitHub Links */}
+              {project.githubLinks && project.githubLinks.map((link, idx) => (
+                <a
+                  key={idx}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => playClickSound('medium')}
+                  onMouseEnter={playHoverSound}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.4rem',
+                    padding: '0.45rem 0.95rem',
+                    borderRadius: 'var(--radius-full)',
+                    backgroundColor: 'var(--bg-primary)',
+                    border: '1px solid var(--border-medium)',
+                    color: 'var(--text-primary)',
+                    fontSize: '0.82rem',
+                    fontWeight: 600,
+                    textDecoration: 'none',
+                  }}
+                  className="mono"
+                >
+                  <Github size={14} />
+                  {link.label}
+                </a>
+              ))}
+
+              <button
+                onClick={() => { onClose(); playClickSound('medium'); }}
+                onMouseEnter={playHoverSound}
+                style={{
+                  width: 40,
+                  height: 40,
+                  borderRadius: '50%',
+                  border: '1px solid var(--border-medium)',
+                  backgroundColor: 'var(--bg-primary)',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s ease',
+                }}
+              >
+                <X size={20} />
+              </button>
+            </div>
           </div>
 
           {/* Nav Tabs */}
@@ -193,9 +262,71 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                   <h4 className="mono" style={{ fontSize: '0.82rem', marginBottom: '0.8rem', color: 'var(--text-tertiary)' }}>
                     DESIGN RATIONALE
                   </h4>
-                  <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                  <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: '1.8rem' }}>
                     {project.rationale}
                   </p>
+
+                  {/* Explore Live & Source Links */}
+                  {((project.liveLinks && project.liveLinks.length > 0) || (project.githubLinks && project.githubLinks.length > 0)) && (
+                    <div style={{ padding: '1.2rem', backgroundColor: 'var(--bg-secondary)', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-light)' }}>
+                      <h4 className="mono" style={{ fontSize: '0.78rem', color: 'var(--text-tertiary)', marginBottom: '0.8rem' }}>
+                        EXPLORE LIVE & SOURCE REPOSITORIES
+                      </h4>
+                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem' }}>
+                        {project.liveLinks?.map((link, i) => (
+                          <a
+                            key={i}
+                            href={link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => playClickSound('high')}
+                            style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '0.4rem',
+                              padding: '0.5rem 1rem',
+                              borderRadius: 'var(--radius-full)',
+                              backgroundColor: project.accentColor,
+                              color: '#262626',
+                              fontWeight: 700,
+                              fontSize: '0.85rem',
+                              textDecoration: 'none',
+                            }}
+                            className="mono"
+                          >
+                            <ExternalLink size={14} />
+                            {link.label} — {link.url}
+                          </a>
+                        ))}
+                        {project.githubLinks?.map((link, i) => (
+                          <a
+                            key={i}
+                            href={link.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => playClickSound('medium')}
+                            style={{
+                              display: 'inline-flex',
+                              alignItems: 'center',
+                              gap: '0.4rem',
+                              padding: '0.5rem 1rem',
+                              borderRadius: 'var(--radius-full)',
+                              backgroundColor: 'var(--bg-primary)',
+                              border: '1px solid var(--border-medium)',
+                              color: 'var(--text-primary)',
+                              fontWeight: 600,
+                              fontSize: '0.85rem',
+                              textDecoration: 'none',
+                            }}
+                            className="mono"
+                          >
+                            <Github size={14} />
+                            {link.label}
+                          </a>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 <div style={{ backgroundColor: 'var(--bg-secondary)', padding: '1.8rem', borderRadius: 'var(--radius-md)', border: '1px solid var(--border-light)' }}>
@@ -246,11 +377,15 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
             {/* PROTOTYPE TAB */}
             {activeTab === 'prototype' && (
               <div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-                  <p style={{ fontSize: '0.95rem', color: 'var(--text-secondary)' }}>
-                    Interactive live device preview simulator.
-                  </p>
-                  <div style={{ display: 'flex', gap: '0.5rem' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
+                  <div>
+                    <h3 style={{ fontSize: '1.3rem', marginBottom: '0.2rem' }}>Live Web Sandbox & Interactive View</h3>
+                    <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
+                      Interact directly with the live web deployment or toggle device frame sizing.
+                    </p>
+                  </div>
+
+                  <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
                     <button
                       onClick={() => setDeviceView('desktop')}
                       style={{
@@ -285,98 +420,123 @@ export const ProjectModal: React.FC<ProjectModalProps> = ({ project, onClose }) 
                     >
                       <Smartphone size={14} /> Mobile
                     </button>
+
+                    {project.liveLinks && project.liveLinks[0] && (
+                      <a
+                        href={project.liveLinks[0].url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={() => playClickSound('high')}
+                        style={{
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '0.3rem',
+                          padding: '0.45rem 0.85rem',
+                          borderRadius: 'var(--radius-sm)',
+                          backgroundColor: project.accentColor,
+                          color: '#262626',
+                          fontSize: '0.8rem',
+                          fontWeight: 700,
+                          textDecoration: 'none',
+                          marginLeft: '0.5rem',
+                        }}
+                        className="mono"
+                      >
+                        <ExternalLink size={13} /> Open Fullscreen
+                      </a>
+                    )}
                   </div>
                 </div>
 
-                {/* Device Frame */}
+                {/* Live Interactive Iframe Frame */}
                 <div
                   style={{
-                    maxWidth: deviceView === 'mobile' ? '360px' : '100%',
+                    maxWidth: deviceView === 'mobile' ? '380px' : '100%',
                     margin: '0 auto',
                     backgroundColor: '#18181B',
-                    borderRadius: deviceView === 'mobile' ? '32px' : '16px',
-                    padding: deviceView === 'mobile' ? '12px' : '16px',
+                    borderRadius: deviceView === 'mobile' ? '28px' : '12px',
+                    padding: deviceView === 'mobile' ? '12px' : '12px',
                     border: '1px solid rgba(255,255,255,0.15)',
                     boxShadow: '0 20px 50px rgba(0,0,0,0.3)',
                     transition: 'all 0.4s ease',
                   }}
                 >
                   {/* Browser Window Header */}
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem', paddingBottom: '0.5rem', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
-                    <div style={{ width: 10, height: 10, borderRadius: '50%', backgroundColor: '#EF4444' }} />
-                    <div style={{ width: 10, height: 10, borderRadius: '50%', backgroundColor: '#F59E0B' }} />
-                    <div style={{ width: 10, height: 10, borderRadius: '50%', backgroundColor: '#10B981' }} />
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem', marginBottom: '0.8rem', paddingBottom: '0.6rem', borderBottom: '1px solid rgba(255,255,255,0.1)' }}>
+                    <div style={{ display: 'flex', gap: '6px' }}>
+                      <div style={{ width: 10, height: 10, borderRadius: '50%', backgroundColor: '#EF4444' }} />
+                      <div style={{ width: 10, height: 10, borderRadius: '50%', backgroundColor: '#F59E0B' }} />
+                      <div style={{ width: 10, height: 10, borderRadius: '50%', backgroundColor: '#10B981' }} />
+                    </div>
+
                     <div
                       style={{
                         flex: 1,
                         textAlign: 'center',
                         backgroundColor: 'rgba(255,255,255,0.08)',
-                        borderRadius: '4px',
-                        fontSize: '0.72rem',
-                        color: '#A1A1AA',
+                        borderRadius: '6px',
+                        fontSize: '0.78rem',
+                        color: '#E4E4E7',
                         fontFamily: 'var(--font-mono)',
-                        padding: '0.2rem',
-                      }}
-                    >
-                      https://{project.id}.harshitabhaskaruni.dev
-                    </div>
-                  </div>
-
-                  {/* Device Content Canvas */}
-                  <div
-                    style={{
-                      backgroundColor: project.bgGradient ? '#1E1E24' : '#FAFAFA',
-                      color: '#262626',
-                      borderRadius: '8px',
-                      padding: '2.5rem 1.8rem',
-                      minHeight: '360px',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      justifyContent: 'center',
-                      position: 'relative',
-                      overflow: 'hidden',
-                    }}
-                  >
-                    <span
-                      style={{
-                        fontSize: '0.75rem',
-                        fontWeight: 700,
                         padding: '0.3rem 0.8rem',
-                        backgroundColor: project.accentColor,
-                        color: '#262626',
-                        borderRadius: '999px',
-                        alignSelf: 'flex-start',
-                        marginBottom: '1rem',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        gap: '0.4rem',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                        whiteSpace: 'nowrap',
                       }}
-                      className="mono"
                     >
-                      PROTOTYPE RUNTIME v3
-                    </span>
-                    <h3 style={{ fontSize: '2rem', marginBottom: '0.8rem', color: '#FFFFFF', fontFamily: 'var(--font-serif)' }}>
-                      {project.mockupContent.heroTitle}
-                    </h3>
-                    <p style={{ color: '#A1A1AA', fontSize: '0.95rem', marginBottom: '1.8rem', maxWidth: '500px' }}>
-                      {project.mockupContent.heroSubtitle}
-                    </p>
-
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '0.8rem' }}>
-                      {project.mockupContent.features.map((f, i) => (
-                        <div
-                          key={i}
-                          style={{
-                            padding: '0.8rem',
-                            backgroundColor: 'rgba(255, 255, 255, 0.06)',
-                            borderRadius: '8px',
-                            border: '1px solid rgba(255, 255, 255, 0.1)',
-                            color: '#F4F4F5',
-                            fontSize: '0.82rem',
-                          }}
-                        >
-                          ✦ {f}
-                        </div>
-                      ))}
+                      <span style={{ color: '#10B981', fontSize: '0.7rem' }}>🔒</span>
+                      {project.liveLinks && project.liveLinks[0] ? project.liveLinks[0].url : `https://${project.id}.dev`}
                     </div>
                   </div>
+
+                  {/* Live Iframe Container */}
+                  {project.liveLinks && project.liveLinks[0] ? (
+                    <div style={{ position: 'relative', width: '100%', height: deviceView === 'mobile' ? '560px' : '520px', borderRadius: '8px', overflow: 'hidden', backgroundColor: '#FFFFFF' }}>
+                      <iframe
+                        src={project.liveLinks[0].url}
+                        title={`${project.title} Live Interactive View`}
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          border: 'none',
+                        }}
+                        sandbox="allow-scripts allow-same-origin allow-forms allow-popups"
+                      />
+                    </div>
+                  ) : (
+                    <div
+                      style={{
+                        backgroundColor: '#1E1E24',
+                        color: '#FFFFFF',
+                        borderRadius: '8px',
+                        padding: '3rem 2rem',
+                        height: deviceView === 'mobile' ? '450px' : '400px',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        textAlign: 'center',
+                      }}
+                    >
+                      <h4 style={{ fontSize: '1.4rem', marginBottom: '0.6rem', fontFamily: 'var(--font-serif)' }}>
+                        {project.title} Concept & Architecture
+                      </h4>
+                      <p style={{ color: '#A1A1AA', fontSize: '0.92rem', maxWidth: '440px', marginBottom: '1.5rem' }}>
+                        {project.tagline}
+                      </p>
+                      <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+                        {project.stack.map(tech => (
+                          <span key={tech} className="mono" style={{ fontSize: '0.75rem', padding: '0.3rem 0.7rem', backgroundColor: 'rgba(255,255,255,0.08)', borderRadius: '4px', color: '#E4E4E7' }}>
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             )}

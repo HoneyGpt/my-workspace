@@ -36,19 +36,24 @@ export const Footer: React.FC = () => {
           <a href="#workspace" style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', textDecoration: 'none' }}>
             Workspace
           </a>
-          <a href="#popcorn" style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', textDecoration: 'none' }}>
-            Popcorn 🍿
-          </a>
           <a href="#projects" style={{ fontSize: '0.82rem', color: 'var(--text-secondary)', textDecoration: 'none' }}>
-            Startups
+            Projects
           </a>
           <a
-            href="https://dribbble.com/bhaskaruni-harshita"
+            href="https://github.com/HoneyGpt"
             target="_blank"
             rel="noopener noreferrer"
-            style={{ fontSize: '0.82rem', color: '#EA4C89', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.3rem', fontWeight: 700 }}
+            style={{ fontSize: '0.82rem', color: 'var(--text-primary)', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.3rem', fontWeight: 600 }}
           >
-            Dribbble <ArrowUpRight size={12} />
+            GitHub <ArrowUpRight size={12} />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/harshitabhaskaruni1117/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ fontSize: '0.82rem', color: '#0A66C2', textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '0.3rem', fontWeight: 600 }}
+          >
+            LinkedIn <ArrowUpRight size={12} />
           </a>
         </div>
 

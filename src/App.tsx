@@ -33,13 +33,10 @@ export function App() {
         {/* 2. Living Workspace / Digital Desk */}
         <InteractiveDesk />
 
-        {/* 3. Popcorn Interactive TV Studio */}
-        <PopcornTV />
-
-        {/* 4. Immersive Projects Canvas */}
+        {/* 3. Projects & Work Archive (Organized by Product Design, Brand + Popcorn TV, Web, Experiments) */}
         <ProjectsCanvas />
 
-        {/* 5. About Me Visual Timeline */}
+        {/* 4. About Me Visual Timeline */}
         <VisualTimeline />
 
         {/* 6. Interactive Skills Constellation Star Graph */}

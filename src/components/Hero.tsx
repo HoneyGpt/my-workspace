@@ -5,7 +5,7 @@ import { HeroCanvas } from './HeroCanvas';
 import { playClickSound, playHoverSound } from '../utils/audio';
 
 export const Hero: React.FC = () => {
-  const [activeWidget, setActiveWidget] = useState<'mentozy' | 'honeygpt' | 'ignite'>('mentozy');
+  const [activeWidget, setActiveWidget] = useState<'mentozy' | 'krishnaite' | 'devdelight'>('mentozy');
 
   return (
     <section
@@ -49,7 +49,7 @@ export const Hero: React.FC = () => {
           }}
         >
           <span className="mono" style={{ fontSize: '0.78rem', color: 'var(--text-secondary)' }}>
-            Bhaskaruni Lakshmi Harshita — Founder, AI Builder & Developer
+            Bhaskaruni Lakshmi Harshita — Product Builder · AI · Design · Engineering
           </span>
         </motion.div>
 
@@ -162,16 +162,16 @@ export const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Widget 2: HoneyGPT AI Assistant */}
+          {/* Widget 2: Krishnaite Decision Platform */}
           <div
             className="workspace-card"
             style={{
               padding: '1.5rem',
               cursor: 'pointer',
-              borderColor: activeWidget === 'honeygpt' ? 'var(--accent-support)' : 'var(--border-light)',
+              borderColor: activeWidget === 'krishnaite' ? 'var(--accent-support)' : 'var(--border-light)',
             }}
             onClick={() => {
-              setActiveWidget('honeygpt');
+              setActiveWidget('krishnaite');
               playClickSound('medium');
             }}
             onMouseEnter={playHoverSound}
@@ -179,12 +179,12 @@ export const Hero: React.FC = () => {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
                 <Terminal size={18} color="#6FA8DC" />
-                <span className="mono" style={{ fontSize: '0.82rem', fontWeight: 600 }}>HoneyGPT AI Engine</span>
+                <span className="mono" style={{ fontSize: '0.82rem', fontWeight: 600 }}>Krishnaite Platform</span>
               </div>
-              <span style={{ fontSize: '0.75rem', color: '#6FA8DC', fontWeight: 600 }}>AI AGENT PLATFORM</span>
+              <span style={{ fontSize: '0.75rem', color: '#6FA8DC', fontWeight: 600 }}>STRATEGIC FRAMEWORK</span>
             </div>
             <p style={{ fontSize: '0.9rem', marginBottom: '1rem' }}>
-              Image generation, code assistance, specialized AI agents & Gemini API integration.
+              Structured ethical decision methodology (K-R-I-S-H-N-A) & educational resource platform.
             </p>
             <div
               style={{
@@ -199,20 +199,20 @@ export const Hero: React.FC = () => {
               }}
             >
               <Cpu size={14} color="#6FA8DC" />
-              <span>Stack: Gemini API + React + Node</span>
+              <span>Live: www.krishnaite.dev</span>
             </div>
           </div>
 
-          {/* Widget 3: Ignite Hack 2.0 */}
+          {/* Widget 3: Dev-delight Hackathon */}
           <div
             className="workspace-card"
             style={{
               padding: '1.5rem',
               cursor: 'pointer',
-              borderColor: activeWidget === 'ignite' ? 'var(--accent-secondary)' : 'var(--border-light)',
+              borderColor: activeWidget === 'devdelight' ? 'var(--accent-secondary)' : 'var(--border-light)',
             }}
             onClick={() => {
-              setActiveWidget('ignite');
+              setActiveWidget('devdelight');
               playClickSound('medium');
             }}
             onMouseEnter={playHoverSound}
@@ -220,12 +220,12 @@ export const Hero: React.FC = () => {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '1rem' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '0.6rem' }}>
                 <Activity size={18} color="#8FAF90" />
-                <span className="mono" style={{ fontSize: '0.82rem', fontWeight: 600 }}>Ignite Hack 2.0</span>
+                <span className="mono" style={{ fontSize: '0.82rem', fontWeight: 600 }}>Dev-delight Hackathon</span>
               </div>
-              <span style={{ fontSize: '0.75rem', color: '#8FAF90', fontWeight: 600 }}>GLOBAL EVENT</span>
+              <span style={{ fontSize: '0.75rem', color: '#8FAF90', fontWeight: 600 }}>INNOVATION EVENT</span>
             </div>
             <p style={{ fontSize: '0.9rem', marginBottom: '1rem' }}>
-              Organized global developer innovation event reaching over 1,000+ registrations.
+              Organized developer innovation event bringing creators together for fast-paced building.
             </p>
             <div
               style={{
@@ -239,8 +239,8 @@ export const Hero: React.FC = () => {
                 fontFamily: 'var(--font-mono)',
               }}
             >
-              <span>Registrations</span>
-              <span style={{ fontWeight: 700, color: '#8FAF90' }}>1,000+ Developers</span>
+              <span>Event Community</span>
+              <span style={{ fontWeight: 700, color: '#8FAF90' }}>Dev-delight Arena</span>
             </div>
           </div>
         </motion.div>
