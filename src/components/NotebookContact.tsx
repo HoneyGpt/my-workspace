@@ -231,8 +231,8 @@ export const NotebookContact: React.FC = () => {
                     <span className="mono" style={{ fontSize: '0.72rem', color: 'var(--text-tertiary)', display: 'block' }}>
                       DIRECT EMAIL
                     </span>
-                    <a href="mailto:harshitabhaskaruni1117@gmail.com" style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--text-primary)', textDecoration: 'none' }}>
-                      harshitabhaskaruni1117@gmail.com
+                    <a href="mailto:honeygpt111@gmail.com" style={{ fontSize: '0.95rem', fontWeight: 600, color: 'var(--text-primary)', textDecoration: 'none' }}>
+                      honeygpt111@gmail.com
                     </a>
                   </div>
                 </div>
